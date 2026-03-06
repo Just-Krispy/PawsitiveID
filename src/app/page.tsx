@@ -9,6 +9,7 @@ import SearchLinks from "@/components/SearchLinks";
 import FlyerGenerator from "@/components/FlyerGenerator";
 import NavBar from "@/components/NavBar";
 import ShareButtons from "@/components/ShareButtons";
+import RecentDogs from "@/components/RecentDogs";
 import { generateSearchLinks } from "@/lib/search-links";
 
 type Step = "upload" | "analyzing" | "results";
@@ -148,6 +149,9 @@ export default function Home() {
           </section>
         )}
 
+        {/* Recent Dogs Feed */}
+        {step === "upload" && <RecentDogs />}
+
         {/* Upload Section */}
         {step === "upload" && (
           <section className="max-w-3xl mx-auto px-4 py-8" aria-label="Photo upload">
@@ -258,6 +262,7 @@ export default function Home() {
               profile={profile}
               photoPreview={photoPreview}
               location={location}
+              profileId={profileId}
             />
 
             {/* Tips */}
