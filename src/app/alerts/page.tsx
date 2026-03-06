@@ -2,6 +2,7 @@
 
 import NavBar from "@/components/NavBar";
 import AlertSubscribeForm from "@/components/AlertSubscribeForm";
+import PushNotificationBanner from "@/components/PushNotificationBanner";
 
 export default function AlertsPage() {
   return (
@@ -29,6 +30,10 @@ export default function AlertsPage() {
           </div>
 
           <AlertSubscribeForm />
+
+          <div className="mt-8">
+            <PushNotificationBanner />
+          </div>
         </section>
 
         <footer className="text-center py-8 text-sm" style={{ color: "var(--text-muted)" }} role="contentinfo">

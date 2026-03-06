@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from "next/server";
 import { nanoid } from "nanoid";
 import { getServerSupabase, isSupabaseConfigured } from "@/lib/supabase";
 import { geocodeLocation } from "@/lib/geocode";
+import { triggerAlertsForDog } from "@/lib/alerts";
+import type { AlertDogProfile } from "@/lib/alerts";
 
 export async function POST(request: NextRequest) {
   try {
@@ -152,6 +154,23 @@ Be specific about distinguishing features like ear shape, tail type, facial mark
         if (insertError) {
           console.error("Supabase insert error:", insertError);
           profileId = null;
+        } else {
+          // Fire-and-forget: trigger real-time alerts for this new dog
+          const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://pawsitiveid.vercel.app";
+          const alertProfile: AlertDogProfile = {
+            id: profileId!,
+            breed: profile.breed,
+            color: profile.color,
+            size: profile.size,
+            description: profile.description || "",
+            photoUrl: photoUrl,
+            locationText: location || "Riverview, FL",
+            latitude: coords?.latitude || null,
+            longitude: coords?.longitude || null,
+          };
+          triggerAlertsForDog(alertProfile, baseUrl).catch((err) =>
+            console.error("Real-time alert trigger failed:", err)
+          );
         }
       } catch (err) {
         console.error("Supabase save error:", err);

@@ -10,6 +10,7 @@ import FlyerGenerator from "@/components/FlyerGenerator";
 import NavBar from "@/components/NavBar";
 import ShareButtons from "@/components/ShareButtons";
 import MicrochipLookup from "@/components/MicrochipLookup";
+import PushNotificationBanner from "@/components/PushNotificationBanner";
 import RecentDogs from "@/components/RecentDogs";
 import SimilarDogs from "@/components/SimilarDogs";
 import { generateSearchLinks } from "@/lib/search-links";
@@ -149,6 +150,13 @@ export default function Home() {
               search shelters, rescues, and lost pet databases across your area.
             </p>
           </section>
+        )}
+
+        {/* Push notification banner */}
+        {step === "upload" && (
+          <div className="max-w-3xl mx-auto px-4 mt-6">
+            <PushNotificationBanner />
+          </div>
         )}
 
         {/* Recent Dogs Feed */}

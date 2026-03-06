@@ -33,6 +33,10 @@
     "react-leaflet": "^5.0.0",
     "resend": "^6.9.3",
     "tailwindcss": "^4.2.1",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "web-push": "^3.6.7"
+  },
+  "devDependencies": {
+    "@types/web-push": "^3.6.4"
   }
 }
