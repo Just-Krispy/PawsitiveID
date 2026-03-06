@@ -16,9 +16,9 @@ export async function GET(request: NextRequest) {
   try {
     const supabase = getServerSupabase();
 
-    // Get dog profiles created in the last 6 hours (matches cron schedule)
-    const sixHoursAgo = new Date(Date.now() - 6 * 60 * 60 * 1000).toISOString();
-    const fifteenMinAgo = sixHoursAgo;
+    // Get dog profiles created in the last 24 hours (daily cron on Hobby plan)
+    const oneDayAgo = new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString();
+    const fifteenMinAgo = oneDayAgo;
     const { data: newProfiles } = await supabase
       .from("dog_profiles")
       .select("*")
