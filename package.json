@@ -1,0 +1,25 @@
+{
+  "name": "pawsitiveid",
+  "version": "1.0.0",
+  "description": "AI-powered lost pet matching platform. Upload a photo of a stray, find their family.",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "keywords": ["lost-pets", "animal-rescue", "ai", "pet-matching"],
+  "author": "Just-Krispy",
+  "license": "MIT",
+  "dependencies": {
+    "@tailwindcss/postcss": "^4.2.1",
+    "@types/node": "^25.3.4",
+    "@types/react": "^19.2.14",
+    "next": "^16.1.6",
+    "postcss": "^8.5.8",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "tailwindcss": "^4.2.1",
+    "typescript": "^5.9.3"
+  }
+}
