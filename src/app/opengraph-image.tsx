@@ -52,13 +52,13 @@ export default function Image() {
             viewBox="0 0 100 100"
             fill="none"
           >
-            <ellipse cx="50" cy="68" rx="18" ry="16" fill="url(#g)" />
-            <ellipse cx="22" cy="38" rx="9" ry="11" transform="rotate(-20 22 38)" fill="url(#g)" />
-            <ellipse cx="78" cy="38" rx="9" ry="11" transform="rotate(20 78 38)" fill="url(#g)" />
-            <ellipse cx="38" cy="26" rx="8" ry="10" transform="rotate(-8 38 26)" fill="url(#g)" />
-            <ellipse cx="62" cy="26" rx="8" ry="10" transform="rotate(8 62 26)" fill="url(#g)" />
-            <circle cx="58" cy="55" r="16" stroke="#fff" strokeWidth="3" fill="none" opacity="0.8" />
-            <line x1="70" y1="67" x2="82" y2="79" stroke="#fff" strokeWidth="4" strokeLinecap="round" opacity="0.8" />
+            <path d="M50 45 C38 45, 24 52, 24 64 C24 74, 32 82, 40 82 C44 82, 47 80, 50 76 C53 80, 56 82, 60 82 C68 82, 76 74, 76 64 C76 52, 62 45, 50 45Z" fill="url(#g)" />
+            <ellipse cx="24" cy="34" rx="9" ry="12" transform="rotate(-15 24 34)" fill="url(#g)" />
+            <ellipse cx="40" cy="24" rx="8" ry="11" transform="rotate(-5 40 24)" fill="url(#g)" />
+            <ellipse cx="60" cy="24" rx="8" ry="11" transform="rotate(5 60 24)" fill="url(#g)" />
+            <ellipse cx="76" cy="34" rx="9" ry="12" transform="rotate(15 76 34)" fill="url(#g)" />
+            <circle cx="62" cy="60" r="16" stroke="#fff" strokeWidth="3" fill="none" opacity="0.8" />
+            <line x1="74" y1="72" x2="86" y2="84" stroke="#fff" strokeWidth="4" strokeLinecap="round" opacity="0.8" />
             <defs>
               <linearGradient id="g" x1="20" y1="20" x2="80" y2="80">
                 <stop offset="0%" stopColor="#f97316" />
