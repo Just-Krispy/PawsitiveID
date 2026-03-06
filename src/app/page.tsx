@@ -7,7 +7,7 @@ import DogProfile from "@/components/DogProfile";
 import SearchResults from "@/components/SearchResults";
 import SearchLinks from "@/components/SearchLinks";
 import FlyerGenerator from "@/components/FlyerGenerator";
-import ThemeToggle from "@/components/ThemeToggle";
+import NavBar from "@/components/NavBar";
 import ShareButtons from "@/components/ShareButtons";
 import { generateSearchLinks } from "@/lib/search-links";
 
@@ -114,51 +114,25 @@ export default function Home() {
       </a>
 
       <main id="main-content" className="min-h-screen pb-20" role="main">
-        {/* Header */}
-        <header className="app-header sticky top-0 z-50" role="banner">
-          <div className="max-w-5xl mx-auto px-4 py-4 flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <PawLogo size={40} />
-              <div>
-                <h1 className="text-xl font-bold gradient-text">PawsitiveID</h1>
-                <p className="text-xs" style={{ color: "var(--text-muted)" }}>
-                  AI-Powered Pet Matching
-                </p>
-              </div>
-            </div>
-            <div className="flex items-center gap-3">
-              <a
-                href="/map"
+        <NavBar
+          currentPage="home"
+          actions={
+            step === "results" ? (
+              <button
+                onClick={handleReset}
                 className="text-sm font-medium px-3 py-2 rounded-lg transition-colors"
                 style={{ color: "var(--paw-orange)" }}
+                aria-label="Start a new search"
               >
-                Map
-              </a>
-              <a
-                href="/alerts"
-                className="text-sm font-medium px-3 py-2 rounded-lg transition-colors"
-                style={{ color: "var(--paw-orange)" }}
-              >
-                Alerts
-              </a>
-              {step === "results" && (
-                <button
-                  onClick={handleReset}
-                  className="text-sm font-medium px-3 py-2 rounded-lg transition-colors"
-                  style={{ color: "var(--paw-orange)" }}
-                  aria-label="Start a new search"
-                >
-                  + New Search
-                </button>
-              )}
-              <ThemeToggle />
-            </div>
-          </div>
-        </header>
+                + New Search
+              </button>
+            ) : undefined
+          }
+        />
 
         {/* Hero */}
         {step === "upload" && (
-          <section className="max-w-3xl mx-auto px-4 pt-16 pb-8 text-center" aria-label="Welcome">
+          <section className="max-w-3xl mx-auto px-4 pt-12 pb-8 text-center page-enter" aria-label="Welcome">
             <div className="mb-6 flex justify-center">
               <PawLogo size={80} />
             </div>
@@ -258,7 +232,7 @@ export default function Home() {
 
         {/* Results */}
         {step === "results" && profile && (
-          <section className="max-w-5xl mx-auto px-4 py-8 space-y-10" aria-label="Search results">
+          <section className="max-w-5xl mx-auto px-4 py-8 space-y-10 page-enter" aria-label="Search results">
             <DogProfile profile={profile} photoPreview={photoPreview} />
 
             {/* Share profile link */}
@@ -333,7 +307,11 @@ export default function Home() {
         )}
 
         {/* Footer */}
-        <footer className="text-center py-8 text-sm" style={{ color: "var(--text-muted)" }} role="contentinfo">
+        <footer className="text-center py-10 text-sm" style={{ color: "var(--text-muted)", borderTop: "1px solid var(--border-card)" }} role="contentinfo">
+          <div className="flex justify-center gap-6 mb-4">
+            <a href="/map" className="hover:underline" style={{ color: "var(--text-secondary)" }}>Map</a>
+            <a href="/alerts" className="hover:underline" style={{ color: "var(--text-secondary)" }}>Alerts</a>
+          </div>
           <p>PawsitiveID - Built with love for every lost paw.</p>
           <p className="mt-1">Every animal deserves to be found.</p>
         </footer>

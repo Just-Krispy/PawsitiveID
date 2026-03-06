@@ -3,7 +3,7 @@
 import { useState, useEffect, useCallback } from "react";
 import PawLogo from "@/components/PawLogo";
 import ShareButtons from "@/components/ShareButtons";
-import ThemeToggle from "@/components/ThemeToggle";
+import NavBar from "@/components/NavBar";
 import SightingForm from "@/components/SightingForm";
 import SightingList from "@/components/SightingList";
 
@@ -71,29 +71,7 @@ export default function DogProfilePage({ profile }: { profile: DogProfileRecord 
       </a>
 
       <main id="main-content" className="min-h-screen pb-20" role="main">
-        <header className="app-header sticky top-0 z-50" role="banner">
-          <div className="max-w-5xl mx-auto px-4 py-4 flex items-center justify-between">
-            <a href="/" className="flex items-center gap-3" aria-label="Go to PawsitiveID home">
-              <PawLogo size={40} />
-              <div>
-                <h1 className="text-xl font-bold gradient-text">PawsitiveID</h1>
-                <p className="text-xs" style={{ color: "var(--text-muted)" }}>
-                  AI-Powered Pet Matching
-                </p>
-              </div>
-            </a>
-            <div className="flex items-center gap-3">
-              <a
-                href="/map"
-                className="text-sm font-medium px-3 py-2 rounded-lg transition-colors"
-                style={{ color: "var(--paw-orange)" }}
-              >
-                Map
-              </a>
-              <ThemeToggle />
-            </div>
-          </div>
-        </header>
+        <NavBar currentPage="dog" />
 
         <section className="max-w-3xl mx-auto px-4 py-8 space-y-6" aria-label="Dog profile">
           {/* Photo */}
