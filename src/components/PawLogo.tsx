@@ -5,34 +5,26 @@ export default function PawLogo({ size = 48 }: { size?: number }) {
     <svg
       width={size}
       height={size}
-      viewBox="0 0 100 100"
+      viewBox="0 0 256 256"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       role="img"
       aria-label="PawsitiveID logo"
     >
-      {/* Main metacarpal pad - wide blob, two humps on top, rounded bottom */}
+      {/* Dog paw print - Phosphor Icons (MIT license) */}
       <path
-        d="M32 52 C28 52, 22 58, 22 66 C22 76, 30 84, 42 84 C46 84, 48 82, 50 78 C52 82, 54 84, 58 84 C70 84, 78 76, 78 66 C78 58, 72 52, 68 52 C64 52, 60 56, 56 56 C54 56, 52 54, 50 54 C48 54, 46 56, 44 56 C40 56, 36 52, 32 52Z"
+        d="M240,108a28,28,0,1,1-28-28A28.1,28.1,0,0,1,240,108ZM72,108a28,28,0,1,0-28,28A28.1,28.1,0,0,0,72,108ZM92,88A28,28,0,1,0,64,60,28.1,28.1,0,0,0,92,88Zm72,0a28,28,0,1,0-28-28A28.1,28.1,0,0,0,164,88Zm23.1,60.8a35.3,35.3,0,0,1-16.9-21.1,43.9,43.9,0,0,0-84.4,0A35.5,35.5,0,0,1,69,148.8,40,40,0,0,0,88,224a40.5,40.5,0,0,0,15.5-3.1,64.2,64.2,0,0,1,48.9-.1A39.6,39.6,0,0,0,168,224a40,40,0,0,0,19.1-75.2Z"
         fill="url(#pawGrad)"
       />
-      {/* Outer left toe */}
-      <ellipse cx="22" cy="34" rx="9" ry="12" transform="rotate(-20 22 34)" fill="url(#pawGrad)" />
-      {/* Inner left toe - larger, higher */}
-      <ellipse cx="39" cy="24" rx="9.5" ry="13" transform="rotate(-8 39 24)" fill="url(#pawGrad)" />
-      {/* Inner right toe - larger, higher */}
-      <ellipse cx="61" cy="24" rx="9.5" ry="13" transform="rotate(8 61 24)" fill="url(#pawGrad)" />
-      {/* Outer right toe */}
-      <ellipse cx="78" cy="34" rx="9" ry="12" transform="rotate(20 78 34)" fill="url(#pawGrad)" />
       {/* Magnifying glass overlay */}
-      <circle cx="63" cy="62" r="16" stroke="var(--paw-glass, #1e293b)" strokeWidth="3" fill="none" opacity="0.85" />
-      <line x1="75" y1="74" x2="87" y2="86" stroke="var(--paw-glass, #1e293b)" strokeWidth="4" strokeLinecap="round" opacity="0.85" />
+      <circle cx="168" cy="164" r="42" stroke="var(--paw-glass, #1e293b)" strokeWidth="8" fill="none" opacity="0.85" />
+      <line x1="198" y1="194" x2="226" y2="222" stroke="var(--paw-glass, #1e293b)" strokeWidth="10" strokeLinecap="round" opacity="0.85" />
       {/* AI sparkles */}
-      <circle cx="58" cy="57" r="2" fill="var(--paw-glass, #1e293b)" opacity="0.8" />
-      <circle cx="67" cy="54" r="1.5" fill="var(--paw-glass, #1e293b)" opacity="0.6" />
-      <circle cx="61" cy="67" r="1.5" fill="var(--paw-glass, #1e293b)" opacity="0.6" />
+      <circle cx="155" cy="152" r="5" fill="var(--paw-glass, #1e293b)" opacity="0.8" />
+      <circle cx="178" cy="148" r="4" fill="var(--paw-glass, #1e293b)" opacity="0.6" />
+      <circle cx="162" cy="176" r="4" fill="var(--paw-glass, #1e293b)" opacity="0.6" />
       <defs>
-        <linearGradient id="pawGrad" x1="20" y1="20" x2="80" y2="80">
+        <linearGradient id="pawGrad" x1="30" y1="30" x2="230" y2="230">
           <stop offset="0%" stopColor="#f97316" />
           <stop offset="100%" stopColor="#f59e0b" />
         </linearGradient>
