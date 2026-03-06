@@ -24,13 +24,13 @@ export default function PawLogo({ size = 48 }: { size?: number }) {
       <ellipse cx="60" cy="24" rx="8" ry="11" transform="rotate(5 60 24)" fill="url(#pawGrad)" />
       {/* Outer right toe */}
       <ellipse cx="76" cy="34" rx="9" ry="12" transform="rotate(15 76 34)" fill="url(#pawGrad)" />
-      {/* Magnifying glass overlay */}
-      <circle cx="62" cy="60" r="16" stroke="#fff" strokeWidth="3" fill="none" opacity="0.8" />
-      <line x1="74" y1="72" x2="86" y2="84" stroke="#fff" strokeWidth="4" strokeLinecap="round" opacity="0.8" />
+      {/* Magnifying glass overlay - uses dark stroke for contrast on any background */}
+      <circle cx="62" cy="60" r="16" stroke="var(--paw-glass, #1e293b)" strokeWidth="3" fill="none" opacity="0.85" />
+      <line x1="74" y1="72" x2="86" y2="84" stroke="var(--paw-glass, #1e293b)" strokeWidth="4" strokeLinecap="round" opacity="0.85" />
       {/* AI sparkles */}
-      <circle cx="57" cy="55" r="2" fill="#fff" opacity="0.9" />
-      <circle cx="66" cy="52" r="1.5" fill="#fff" opacity="0.7" />
-      <circle cx="60" cy="65" r="1.5" fill="#fff" opacity="0.7" />
+      <circle cx="57" cy="55" r="2" fill="var(--paw-glass, #1e293b)" opacity="0.8" />
+      <circle cx="66" cy="52" r="1.5" fill="var(--paw-glass, #1e293b)" opacity="0.6" />
+      <circle cx="60" cy="65" r="1.5" fill="var(--paw-glass, #1e293b)" opacity="0.6" />
       <defs>
         <linearGradient id="pawGrad" x1="20" y1="20" x2="80" y2="80">
           <stop offset="0%" stopColor="#f97316" />

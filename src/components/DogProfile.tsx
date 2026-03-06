@@ -20,12 +20,12 @@ interface DogProfileProps {
 }
 
 export default function DogProfile({ profile, photoPreview }: DogProfileProps) {
-  const confidenceColor =
+  const confidenceVar =
     profile.confidence === "high"
-      ? "text-green-600"
+      ? "var(--confidence-high)"
       : profile.confidence === "medium"
-        ? "text-amber-500"
-        : "text-red-500";
+        ? "var(--confidence-medium)"
+        : "var(--confidence-low)";
 
   return (
     <div className="glass-card p-6 max-w-2xl mx-auto" role="region" aria-label="Dog analysis results">
@@ -42,7 +42,8 @@ export default function DogProfile({ profile, photoPreview }: DogProfileProps) {
           />
           {profile.confidence && (
             <span
-              className={`absolute top-2 right-2 text-xs font-bold px-2 py-1 rounded-full bg-black/60 text-white ${confidenceColor}`}
+              className="absolute top-2 right-2 text-xs font-bold px-2 py-1 rounded-full bg-black/60"
+              style={{ color: confidenceVar }}
             >
               {profile.confidence} confidence
             </span>
@@ -97,9 +98,13 @@ export default function DogProfile({ profile, photoPreview }: DogProfileProps) {
           )}
 
           {profile.healthNotes && profile.healthNotes !== "Appears healthy" && (
-            <div className="mt-2 p-3 rounded-lg bg-red-500/10 border border-red-500/30" role="alert">
-              <span className="text-red-600 text-sm font-semibold">Health Note: </span>
-              <span className="text-red-500 text-sm">{profile.healthNotes}</span>
+            <div
+              className="mt-2 p-3 rounded-lg"
+              style={{ background: "var(--health-bg)", border: "1px solid var(--health-border)" }}
+              role="alert"
+            >
+              <span className="text-sm font-semibold" style={{ color: "var(--health-text)" }}>Health Note: </span>
+              <span className="text-sm" style={{ color: "var(--health-text)" }}>{profile.healthNotes}</span>
             </div>
           )}
         </div>
