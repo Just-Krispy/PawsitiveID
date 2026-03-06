@@ -145,10 +145,20 @@ export default function Home() {
               <br />
               <span style={{ color: "var(--text-primary)" }}>Help them find home.</span>
             </h2>
-            <p className="text-lg max-w-xl mx-auto" style={{ color: "var(--text-secondary)" }}>
+            <p className="text-lg max-w-xl mx-auto mb-6" style={{ color: "var(--text-secondary)" }}>
               Upload a photo and our AI will identify the breed, features, and
               search shelters, rescues, and lost pet databases across your area.
             </p>
+            <a
+              href="/lost"
+              className="inline-block text-sm font-medium px-5 py-2.5 rounded-xl transition-colors"
+              style={{
+                border: "1px solid var(--paw-orange)",
+                color: "var(--paw-orange)",
+              }}
+            >
+              Lost your dog? File a report instead
+            </a>
           </section>
         )}
 
@@ -161,6 +171,13 @@ export default function Home() {
 
         {/* Recent Dogs Feed */}
         {step === "upload" && <RecentDogs />}
+
+        {/* Quick Microchip Lookup */}
+        {step === "upload" && (
+          <div className="max-w-3xl mx-auto px-4 mt-6">
+            <MicrochipLookup />
+          </div>
+        )}
 
         {/* Upload Section */}
         {step === "upload" && (
@@ -341,6 +358,8 @@ export default function Home() {
         {/* Footer */}
         <footer className="text-center py-10 text-sm" style={{ color: "var(--text-muted)", borderTop: "1px solid var(--border-card)" }} role="contentinfo">
           <div className="flex justify-center gap-6 mb-4">
+            <a href="/lost" className="hover:underline" style={{ color: "var(--text-secondary)" }}>Report Lost</a>
+            <a href="/lost-dogs" className="hover:underline" style={{ color: "var(--text-secondary)" }}>Lost Dogs</a>
             <a href="/map" className="hover:underline" style={{ color: "var(--text-secondary)" }}>Map</a>
             <a href="/alerts" className="hover:underline" style={{ color: "var(--text-secondary)" }}>Alerts</a>
           </div>
