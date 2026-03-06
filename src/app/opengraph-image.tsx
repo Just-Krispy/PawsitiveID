@@ -52,11 +52,11 @@ export default function Image() {
             viewBox="0 0 100 100"
             fill="none"
           >
-            <ellipse cx="50" cy="62" rx="22" ry="20" fill="url(#g)" />
-            <ellipse cx="28" cy="35" rx="10" ry="12" transform="rotate(-15 28 35)" fill="url(#g)" />
-            <ellipse cx="72" cy="35" rx="10" ry="12" transform="rotate(15 72 35)" fill="url(#g)" />
-            <ellipse cx="36" cy="25" rx="9" ry="11" transform="rotate(-5 36 25)" fill="url(#g)" />
-            <ellipse cx="64" cy="25" rx="9" ry="11" transform="rotate(5 64 25)" fill="url(#g)" />
+            <ellipse cx="50" cy="68" rx="18" ry="16" fill="url(#g)" />
+            <ellipse cx="22" cy="38" rx="9" ry="11" transform="rotate(-20 22 38)" fill="url(#g)" />
+            <ellipse cx="78" cy="38" rx="9" ry="11" transform="rotate(20 78 38)" fill="url(#g)" />
+            <ellipse cx="38" cy="26" rx="8" ry="10" transform="rotate(-8 38 26)" fill="url(#g)" />
+            <ellipse cx="62" cy="26" rx="8" ry="10" transform="rotate(8 62 26)" fill="url(#g)" />
             <circle cx="58" cy="55" r="16" stroke="#fff" strokeWidth="3" fill="none" opacity="0.8" />
             <line x1="70" y1="67" x2="82" y2="79" stroke="#fff" strokeWidth="4" strokeLinecap="round" opacity="0.8" />
             <defs>

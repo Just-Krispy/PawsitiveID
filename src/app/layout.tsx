@@ -30,8 +30,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className="paw-cursor min-h-screen">
+    <html lang="en" suppressHydrationWarning>
+      <body className="min-h-screen antialiased">
         {children}
       </body>
     </html>
