@@ -1,4 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
+import { nanoid } from "nanoid";
+import { getServerSupabase, isSupabaseConfigured } from "@/lib/supabase";
+import { geocodeLocation } from "@/lib/geocode";
 
 export async function POST(request: NextRequest) {
   try {
@@ -94,9 +97,71 @@ Be specific about distinguishing features like ear shape, tail type, facial mark
     }
 
     const profile = JSON.parse(jsonMatch[0]);
+    let profileId: string | null = null;
+
+    // Save to Supabase if configured
+    if (isSupabaseConfigured()) {
+      try {
+        const supabase = getServerSupabase();
+        profileId = nanoid(12);
+
+        // Upload photo to Supabase Storage
+        const ext = image.name?.split(".").pop() || "jpg";
+        const filePath = `dogs/${profileId}.${ext}`;
+        const { error: uploadError } = await supabase.storage
+          .from("dog-photos")
+          .upload(filePath, Buffer.from(bytes), {
+            contentType: mediaType,
+            upsert: true,
+          });
+
+        let photoUrl = "";
+        if (!uploadError) {
+          const { data: urlData } = supabase.storage
+            .from("dog-photos")
+            .getPublicUrl(filePath);
+          photoUrl = urlData.publicUrl;
+        }
+
+        // Geocode the location
+        const coords = await geocodeLocation(location || "Riverview, FL");
+
+        // Insert dog profile
+        const { error: insertError } = await supabase
+          .from("dog_profiles")
+          .insert({
+            id: profileId,
+            breed: profile.breed,
+            color: profile.color,
+            size: profile.size,
+            distinguishing_features: profile.distinguishingFeatures || [],
+            has_collar: profile.hasCollar || false,
+            collar_description: profile.collarDescription || null,
+            estimated_age: profile.estimatedAge,
+            gender: profile.gender || "unknown",
+            description: profile.description,
+            confidence: profile.confidence || null,
+            health_notes: profile.healthNotes || null,
+            photo_url: photoUrl,
+            location_text: location || "Riverview, FL",
+            latitude: coords?.latitude || null,
+            longitude: coords?.longitude || null,
+            shelter_results: [],
+          });
+
+        if (insertError) {
+          console.error("Supabase insert error:", insertError);
+          profileId = null;
+        }
+      } catch (err) {
+        console.error("Supabase save error:", err);
+        profileId = null;
+      }
+    }
 
     return NextResponse.json({
       profile,
+      profileId,
       location: location || "Riverview, FL",
     });
   } catch (error) {

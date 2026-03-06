@@ -20,6 +20,7 @@ interface ShelterResult {
   published_at: string;
   _demo?: boolean;
   _shelter?: string;
+  _source?: "petfinder" | "rescuegroups" | "demo";
 }
 
 interface SearchResultsProps {
@@ -101,6 +102,18 @@ export default function SearchResults({
                   >
                     {animal.status}
                   </span>
+                  {animal._source && animal._source !== "demo" && (
+                    <span
+                      className="text-xs px-2 py-0.5 rounded-full shrink-0 ml-1"
+                      style={{
+                        background: "var(--bg-secondary)",
+                        color: "var(--text-muted)",
+                        border: "1px solid var(--border-card)",
+                      }}
+                    >
+                      {animal._source === "rescuegroups" ? "RescueGroups" : "Petfinder"}
+                    </span>
+                  )}
                 </div>
 
                 <p className="text-sm mt-1" style={{ color: "var(--text-secondary)" }}>

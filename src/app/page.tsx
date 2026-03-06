@@ -8,6 +8,7 @@ import SearchResults from "@/components/SearchResults";
 import SearchLinks from "@/components/SearchLinks";
 import FlyerGenerator from "@/components/FlyerGenerator";
 import ThemeToggle from "@/components/ThemeToggle";
+import ShareButtons from "@/components/ShareButtons";
 import { generateSearchLinks } from "@/lib/search-links";
 
 type Step = "upload" | "analyzing" | "results";
@@ -32,6 +33,7 @@ export default function Home() {
   const [photoPreview, setPhotoPreview] = useState<string>("");
   const [location, setLocation] = useState("Riverview, FL");
   const [profile, setProfile] = useState<DogProfileData | null>(null);
+  const [profileId, setProfileId] = useState<string | null>(null);
   const [shelterResults, setShelterResults] = useState<unknown[]>([]);
   const [shelterSource, setShelterSource] = useState("");
   const [error, setError] = useState<string | null>(null);
@@ -67,6 +69,7 @@ export default function Home() {
 
       const analyzeData = await analyzeRes.json();
       setProfile(analyzeData.profile);
+      setProfileId(analyzeData.profileId || null);
 
       setAnalysisStatus("Searching nearby shelters and rescues...");
       const searchRes = await fetch("/api/search", {
@@ -98,6 +101,7 @@ export default function Home() {
     setSelectedFile(null);
     setPhotoPreview("");
     setProfile(null);
+    setProfileId(null);
     setShelterResults([]);
     setError(null);
   }, []);
@@ -123,6 +127,20 @@ export default function Home() {
               </div>
             </div>
             <div className="flex items-center gap-3">
+              <a
+                href="/map"
+                className="text-sm font-medium px-3 py-2 rounded-lg transition-colors"
+                style={{ color: "var(--paw-orange)" }}
+              >
+                Map
+              </a>
+              <a
+                href="/alerts"
+                className="text-sm font-medium px-3 py-2 rounded-lg transition-colors"
+                style={{ color: "var(--paw-orange)" }}
+              >
+                Alerts
+              </a>
               {step === "results" && (
                 <button
                   onClick={handleReset}
@@ -242,6 +260,15 @@ export default function Home() {
         {step === "results" && profile && (
           <section className="max-w-5xl mx-auto px-4 py-8 space-y-10" aria-label="Search results">
             <DogProfile profile={profile} photoPreview={photoPreview} />
+
+            {/* Share profile link */}
+            {profileId && (
+              <ShareButtons
+                profileId={profileId}
+                breed={profile.breed}
+                location={location}
+              />
+            )}
 
             <SearchResults
               results={shelterResults as never[]}
