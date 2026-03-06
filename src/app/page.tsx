@@ -9,7 +9,9 @@ import SearchLinks from "@/components/SearchLinks";
 import FlyerGenerator from "@/components/FlyerGenerator";
 import NavBar from "@/components/NavBar";
 import ShareButtons from "@/components/ShareButtons";
+import MicrochipLookup from "@/components/MicrochipLookup";
 import RecentDogs from "@/components/RecentDogs";
+import SimilarDogs from "@/components/SimilarDogs";
 import { generateSearchLinks } from "@/lib/search-links";
 
 type Step = "upload" | "analyzing" | "results";
@@ -245,8 +247,25 @@ export default function Home() {
                 profileId={profileId}
                 breed={profile.breed}
                 location={location}
+                description={profile.description}
+                distinguishingFeatures={profile.distinguishingFeatures}
+                photoPreview={photoPreview}
+                profile={profile}
               />
             )}
+
+            {/* Microchip lookup */}
+            <div className="max-w-2xl mx-auto">
+              <MicrochipLookup />
+            </div>
+
+            {/* Similar dogs in database */}
+            <SimilarDogs
+              breed={profile.breed}
+              color={profile.color}
+              size={profile.size}
+              excludeId={profileId}
+            />
 
             <SearchResults
               results={shelterResults as never[]}
