@@ -11,20 +11,20 @@ export default function PawLogo({ size = 48 }: { size?: number }) {
       role="img"
       aria-label="PawsitiveID logo"
     >
-      {/* Main pad - tri-lobe heart shape */}
+      {/* Main metacarpal pad - wide rounded shape with tri-lobe top */}
       <path
-        d="M50 45 C38 45, 24 52, 24 64 C24 74, 32 82, 40 82 C44 82, 47 80, 50 76 C53 80, 56 82, 60 82 C68 82, 76 74, 76 64 C76 52, 62 45, 50 45Z"
+        d="M50 48 C40 48, 30 50, 25 56 C20 62, 20 70, 25 76 C30 82, 38 85, 44 83 C47 82, 49 79, 50 76 C51 79, 53 82, 56 83 C62 85, 70 82, 75 76 C80 70, 80 62, 75 56 C70 50, 60 48, 50 48Z"
         fill="url(#pawGrad)"
       />
-      {/* Outer left toe */}
-      <ellipse cx="24" cy="34" rx="9" ry="12" transform="rotate(-15 24 34)" fill="url(#pawGrad)" />
+      {/* Outer left toe - tilted outward */}
+      <ellipse cx="20" cy="32" rx="8" ry="12" transform="rotate(-25 20 32)" fill="url(#pawGrad)" />
       {/* Inner left toe */}
-      <ellipse cx="40" cy="24" rx="8" ry="11" transform="rotate(-5 40 24)" fill="url(#pawGrad)" />
+      <ellipse cx="37" cy="22" rx="7.5" ry="11" transform="rotate(-10 37 22)" fill="url(#pawGrad)" />
       {/* Inner right toe */}
-      <ellipse cx="60" cy="24" rx="8" ry="11" transform="rotate(5 60 24)" fill="url(#pawGrad)" />
-      {/* Outer right toe */}
-      <ellipse cx="76" cy="34" rx="9" ry="12" transform="rotate(15 76 34)" fill="url(#pawGrad)" />
-      {/* Magnifying glass overlay - uses dark stroke for contrast on any background */}
+      <ellipse cx="63" cy="22" rx="7.5" ry="11" transform="rotate(10 63 22)" fill="url(#pawGrad)" />
+      {/* Outer right toe - tilted outward */}
+      <ellipse cx="80" cy="32" rx="8" ry="12" transform="rotate(25 80 32)" fill="url(#pawGrad)" />
+      {/* Magnifying glass overlay */}
       <circle cx="62" cy="60" r="16" stroke="var(--paw-glass, #1e293b)" strokeWidth="3" fill="none" opacity="0.85" />
       <line x1="74" y1="72" x2="86" y2="84" stroke="var(--paw-glass, #1e293b)" strokeWidth="4" strokeLinecap="round" opacity="0.85" />
       {/* AI sparkles */}
